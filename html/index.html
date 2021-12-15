@@ -1,0 +1,205 @@
+<!doctype html>
+<html ng-app="mainapp" ng-controller="maincontroller">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-control" content="public">
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="author" content="Next Mobile">
+<meta name="robots" content="noindex">
+<meta name="google" value="notranslate">
+
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="【有獎遊戲】《奇華Make a Wish‧熊貓驚喜Fun Fun賞》"/>
+<meta property="og:description"   content="立即入嚟幫奇華聖誔熊貓佈置聖誔樹，即有機會獲得奇華餅家聖誔套裝一份(總值:$268)"/>
+<meta property="og:image"         content="http://campaign.nextdigital.com.hk/keewah/dev/" />
+
+    
+<title>奇華MAKE A WISH熊貓驚喜Fun Fun 賞</title>
+
+<link href="./css/normalize.min.css" rel="stylesheet">
+<link href="./css/font-awesome.min.css" rel="stylesheet">
+<link href="./css/main.css" rel="stylesheet"> 
+
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/angular.min.js"></script>
+<script src="./js/angular-animate.min.js"></script>  
+<script src="./js/angular-touch.min.js"></script>
+
+<script src="./js/jquery.mb.audio.js"></script>
+<script src="./js/main.js"></script>
+    
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-87059619-11', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+    
+</head>
+
+<body>
+<div class="outter_container" ng-show="stage=='1'">
+    <div class="luckball"><img src="images/ball.png"></div>
+    <div style="width:100%; height:100%; background: url(images/splashscreen.jpg) no-repeat; background-size: cover; ">
+        <a ng-click="setStage(2);" class="startBtn1"> 
+            <img src="images/btn_start.png" width="100%">
+        </a>
+    </div>
+</div>
+<div class="outter_container" ng-show="stage==2">
+    <div style="width:100%; height:100%; background: url(images/tutorial1.jpg) no-repeat; background-size: cover; ">
+        <a ng-click="setStage(2.1);" class="nextpage"> 
+            <img src="images/btn_nextpage.png" width="100%">
+        </a>
+    </div>
+</div>    
+<div class="outter_container" ng-show="stage==2.1">
+    <div style="width:100%; height:100%; background: url(images/tutorial2.jpg) no-repeat; background-size: cover; ">
+        <a ng-click="gamestart();" class="startBtn2"> 
+            <img src="images/btn_start2.png" width="100%">
+        </a>
+        <a ng-click="showtnc();" class="tncBtn"> 
+            <img src="images/btn_tnc.png" width="100%">
+        </a>
+    </div>
+</div>    
+<div class="outter_container" ng-show="stage==3" >
+    <div id="point"><p>{{ point }}</p></div>
+    <div id="pointBackground"><img src="images/mark.png"></div>
+    <div id="bg"><img src="images/bg2.jpg"></div>
+   
+    <div id="char">
+        <img src="images/charater_right.gif">
+         <div id="collisionbox"></div>
+    </div>
+    <div id="leftBtn">
+        <a ng-click="moveleft($event)" ng-model="leftbtn">
+        <img src="images/btn_left.png"> </a>
+    </div>
+    <div id="rightBtn">
+        <a  ng-click="moveright($event)" ng-model="rightbtn">
+       <img src="images/btn_right.png">
+        </a>
+    </div>
+    <div id="clickpanel" >
+        <a  ng-click="clickPanel($event)" ng-model="clickPanel">
+            <img src="images/clickpanel.png">
+        </a>
+    </div>
+    <div id="timer"></div>
+    <div id="cookieContainer">
+    </div>
+    <div id="sound" style="display: none;">
+        <audio id="dummySound"   preload="auto" controls="none" style="display:none;">
+            <source src="sound/drop.wav" type="audio/mp3">
+        </audio>
+        <audio id="collisionSound"  preload="auto" controls="none" style="display:none;" >
+            <source src="sound/collision.mp3" type="audio/mp3">
+        </audio>
+        <audio id="dropSound"   preload="auto" controls="none" style="display:none;">
+            <source src="sound/drop.wav" type="audio/mp3">
+        </audio>
+    </div>
+</div>
+    
+ <div class="outter_container" ng-show="stage==4">
+    <div style="width:100%; height:100%; background: url(images/result.jpg) no-repeat; background-size: cover; ">
+         <div id="resultpoint"><p>你的分數： {{ point }}</p></div>
+        <a ng-click="setStage(5);" class="btnCoupon" ng-show="totalPoint>=400"> 
+            <img src="images/btn_coupon.png" width="100%">
+        </a>
+        <a ng-click="setStage(6);" class="btnToRegistration"> 
+            <img src="images/btn_toregistration.png" width="100%">
+        </a>
+        <a ng-click="replay();" class="btnReplay"> 
+            <img src="images/btn_replay.png" width="100%">
+        </a>
+    </div>
+</div>    
+<div class="outter_container" ng-show="stage==5">
+    
+    <div style="width:100%; height:100%; background: url(images/coupon9.jpg) no-repeat; background-size: cover; " ng-show="totalPoint>=700">
+        <img src="images/screencap.png" style="width:100%; position: absolute; top:0; left:0; z-index: 2;" ng-click="showDiv=true" ng-show="!showDiv">
+        <a ng-click="setStage(4);" style="width:4%; position: absolute; top:4%; right:6%;"> 
+            <img src="images/btn_close.jpg" width="100%">
+        </a>
+    </div>
+    <div style="width:100%; height:100%; background: url(images/coupon95.jpg) no-repeat; background-size: cover; " ng-show="totalPoint>=400 && totalPoint<700">
+        <img src="images/screencap.png" style="width:100%; position: absolute; top:0; left:0; z-index: 2;" ng-click="showDiv=true" ng-show="!showDiv">
+        <a ng-click="setStage(4);" style="width:4%; position: absolute; top:4%; right:6%;"> 
+            <img src="images/btn_close.jpg" width="100%">
+        </a>
+    </div>
+</div>    
+    
+<div id="formcontainer" class="outter_container" ng-show="stage==6">
+   <div style="width:100%; height:100%; position: absolute;  background: url(images/form.jpg) no-repeat; background-size: cover; ">
+       <div style="position: relative; width: 100%;"><img src="images/form.jpg" style="width: 100%;">
+       <form id="regform"  method="post"  novalidate>
+           <input type="text" id="name" name="name" ng-model="name" required>
+                <label class="error" id="error_name" ng-show="errorobj.name != null" ng-click="reseterror('name');">
+                    <img src="images/error_name.png" ></label>
+           <input type="text" id="mobile" name="mobile" ng-model="mobile" maxlength="8" required>
+                <label class="error" id="error_mobile" ng-show="errorobj.mobile != null" ng-click="reseterror('mobile');">
+                    <img src="images/error_phone.png"></label>
+           <input type="text" id="hkid" name="hkid" ng-model="hkid" maxlength="4" required>
+                <label class="error" id="error_hkid" ng-show="errorobj.hkid != null" ng-click="reseterror('hkid');">
+                    <img src="images/error_hkid.png"></label>
+           <input type="text" id="email" name="email" ng-model="email" required>
+                <label class="error" id="error_email" ng-show="errorobj.email != null" ng-click="reseterror('email');">
+                    <img src="images/error_email.png"></label>
+           
+            <input type="checkbox" id="tnc" name="tnc" ng-model="tnc"  value="yes"><label for="tnc"></label>
+                <label class="error" id="error_tnc" ng-show="errorobj.tnc != null"  ng-click="reseterror('tnc');">
+                    <img src="images/error_tnc.png"></label>
+                <a ng-click="setStage(9)" style="display:block; position: absolute; width: 13%; height: 2.4%;     top: 63.3%;    left: 55.4%; cursor: pointer;"></a>
+           <button name="submit" id="submit" ng-model="submit" ng-click="formsubmit();">
+                 <img src="images/btn_submit.png" style="width:100%;">
+           </button>  
+       </form>
+           </div>
+    </div>
+</div>   
+    
+    
+<div class="outter_container" ng-show="stage==8">
+    <div style="width:100%; height:100%; background: url(images/tnc.jpg) no-repeat; background-size: cover; ">
+        <a ng-click="setStage(2.1);" class="closebtn"> 
+            <img src="images/btn_close.jpg" width="100%">
+        </a>
+        <a href="http://www.nextdigital.com.hk/info/privacy.html" target="_blank" style="display:block; position: absolute; width: 13%; height: 2.4%; top: 74%; left: 37.4%; cursor: pointer;"></a>
+    </div>
+</div>  
+    
+    
+<div class="outter_container" ng-show="stage==9">
+    <div style="width:100%; height:100%; background: url(images/tnc.jpg) no-repeat; background-size: cover; ">
+        <a ng-click="setStage(6);" class="closebtn"> 
+            <img src="images/btn_close.jpg" width="100%">
+        </a>
+        <a href="http://www.nextdigital.com.hk/info/privacy.html" target="_blank" style="display:block; position: absolute; width: 13%; height: 2.4%; top: 74%; left: 37.4%; cursor: pointer;"></a>
+    </div>
+</div>  
+ 
+    
+<div class="outter_container" ng-show="stage==10">
+    <div style="width:100%; height:100%; background: url(images/thankyou.jpg) no-repeat; background-size: cover; ">
+         
+        <a ng-click="sharefacebook()" class="btnToRegistration" style="top:52%;"> 
+            <img src="images/btn_share.png" width="100%">
+        </a>
+        <a ng-click="replay();" class="btnReplay" style="top:65%;"> 
+            <img src="images/btn_replay.png" width="100%">
+        </a>
+    </div>
+</div>  
+  
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Admin</title>
+		<!-- Bootstrap -->
+	    <script src="//code.jquery.com/jquery.js"></script>
+	</head>
+	<body id="admin" onload="">
+	<table class = "table" width = "100%">
+	<thead>
+	<tr>
+		<th>No</th>
+		<th>Date</th>
+		<th>Name</th>
+		<th>Mobile</th>
+		<th>Email</th>
+		<th>HKID</th>
+		<th>Mark</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for user in users %}
+	<tr>
+	<td align="center" >{{loop.index}}</td>				
+	<td align="center" >{{user.PLAYTIME.strftime('%Y-%m-%d %H:%M:%S')}}</td>
+	<td align="center" >{{user.NAME}}</td>
+	<td align="center" >{{user.PHONE}}</td>
+	<td align="center" >{{user.EMAIL}}</td>
+	<td align="center" >{{user.HKID}}</td>
+	<td align="center" >{{user.MARK}}</td>
+    
+	<tr>
+	{% endfor %}
+	<tbody>
+	</table>	
+	</body>
+</html>

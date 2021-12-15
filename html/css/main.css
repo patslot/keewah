@@ -1,0 +1,385 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/cwtexhei.css);
+@import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
+/* CSS Document */
+html{
+    overflow: hidden;
+}
+body{
+    
+    font-family: 'Noto Sans TC', 微軟正黑體, 'cwTeXHei', sans-serif , "Microsoft JhengHei", "麗黑 Pro", "LiHei Pro Medium", Helvetica, "Helvetica Neue",  Arial;
+    background: #000;
+    background-size: auto 100%;
+    text-align: center;
+    font-size: 14px;
+    margin: auto ;
+    height: 100%;
+}
+div{
+    display: block;
+}
+
+.outter_container{
+    margin: 0 auto;
+    background: #000; 
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.startBtn1{
+    display: block;
+    width: 100%;
+    position: absolute;
+}
+.startBtn2{
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 67%;
+}
+.nextpage{
+   display: block;
+    width: 100%;
+    position: absolute; 
+    top: 84%;
+}
+.tncBtn{
+   display: block;
+    width: 100%;
+    position: absolute; 
+    top: 78%; 
+}
+.closebtn{
+    display: block;
+    position: absolute;
+    top: 4%;
+    right: 5.5%;
+    width: 4%;
+}
+.clsebtn img{
+    width: 25px;
+}
+#resultpoint{
+    position: absolute;
+    
+    display: table; 
+    width: 100%;
+    top: 31.5%;
+    color: #fbf9e9;
+}
+#resultpoint p{
+    margin: 0; 
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+}
+@media screen and (max-width:480px){
+    #resultpoint p{
+
+        font-size: 1.3em;
+    }
+}
+.btnCoupon{
+    display: block;
+    position: absolute;
+    top: 54%;
+    
+    width: 100%;
+}
+.btnToRegistration{
+    display: block;
+    position: absolute;
+    top: 64%;
+    
+    width: 100%;
+}
+.btnReplay{
+    display: block;
+    position: absolute;
+    top: 74%;
+    
+    width: 100%;
+}
+#bg{
+    position: relative;
+    overflow: hidden; 
+    width: 100%;
+    height: 100%;
+}
+#bg img{
+    position: absolute;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+#point{
+    position: absolute;
+        top: 3.9%;
+    display: table; 
+    left: 15%;
+    font-size: 2.3em;
+    color: #c99f6a;
+    z-index: 11;
+    height:  5.7%;
+    width: 19%;
+
+}
+#point p{
+    margin: 0; 
+    display: table-cell;
+    vertical-align: middle;
+}
+@media screen and (max-width:480px){
+    #point{
+        font-size: 1.3em;
+    }
+    
+}
+#pointBackground{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+     width: 100%;
+    z-index: 10;
+}
+#pointBackground img{
+    width: 100%;
+}
+#collisionbox{
+    position: absolute;
+    background: rgba(255,255,255,0);
+    display: block;
+    left: 49%;
+    top: 50%;
+    width: 38%;
+    height: 10px;
+    z-index: 10;
+}
+#char{
+    position: absolute;
+    width: 42%;
+    bottom: 82px;
+    left: 40%;
+
+}
+#char img{
+    width:100%;
+}
+#cookieContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.cookie{
+    position: absolute;
+    width: 15%; 
+}
+.cookie img{
+    width: 100%;
+}
+
+#leftBtn{
+    position: absolute;
+    z-index: 10;
+    bottom: 10vh;
+    width: 15%;
+    left: 5px;
+}
+
+#rightBtn{
+    position: absolute;
+    width: 15%;
+    z-index: 10;
+    bottom: 10vh;
+    right: 5px;
+}
+#leftBtn img, #rightBtn img{
+    width: 100%; 
+}
+#clickpanel{
+    width: 100%; 
+    height: 100%; 
+    
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#clickpanel a {
+    width: 100%; 
+    height: 100%; 
+    display: block;
+}
+
+.luckball{
+    position: absolute;
+    top: -375%;
+    z-index: 20;
+    
+}
+.luckball img{
+    width: 120%;
+    margin-left: -10%
+}
+
+input#name{
+    position: absolute;
+    width: 70%;
+    height: 2.7%;
+    top: 18%;
+    left: 12%;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 0;
+}
+
+input#mobile{
+        position: absolute;
+    width: 70%;
+    height: 2.7%;
+    top: 29.8%;
+    left: 12%;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 0;
+}
+
+input#hkid{
+        position: absolute;
+    width: 70%;
+    height: 2.7%;
+    top: 41.3%;
+    left: 12%;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 0;
+}
+
+input#email{
+        position: absolute;
+    width: 70%;
+    height: 2.7%;
+    top: 53%;
+    left: 12%;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 0;
+}
+
+input:focus {
+    outline: none !important;
+}
+input[type=checkbox] {
+    position: absolute;
+    width: 75%;
+    height: 3%;
+    top: 64%;
+    left: 12%;
+    font-size: 1.3em;
+    border: none;
+    display:none;
+  }
+ 
+  input[type=checkbox] + label
+   {    position: absolute;
+        width: 6%;
+        height: 4.8%;
+        top: 62.6%;
+        left: 11.5%;
+       background: none;
+           
+       display:inline-block;
+       padding: 0 0 0 0px;
+   }
+   
+   input[type=checkbox]:checked + label
+    {
+        background: url(../images/tick.png) no-repeat ;
+        background-size: 100% 100%;
+        display:inline-block;
+        padding: 0 0 0 0px;
+    }
+#submit{
+    position: absolute;
+    display: block;
+    width:100%;
+    border: 0; 
+    top: 80%;
+    background: transparent;
+    border: none;
+    outline:none;
+    cursor: pointer;
+}
+
+.error{
+    position: absolute;
+    width: 78%;
+    height: 5%;
+}
+.error img{
+    width: 100%;
+}
+#error_name{
+    left: 11%;
+    top: 17.5%;
+}
+#error_mobile{
+    left: 11%;
+    top: 29%;
+}
+#error_hkid{
+    left: 11%;
+    top: 40.8%;
+}
+#error_email{
+    left: 11%;
+    top: 52.4%;
+}
+#error_tnc{
+    left: 11%;
+    top: 69.7%;
+}
+@media screen and (min-aspect-ratio: 480/639){
+	.outter_container{width:75vh;top: 0;left: 0;right: 0;margin: auto;position: absolute;}
+    .startBtn1{
+        top: 66%;
+    }
+     #char{
+            bottom: -2vh;
+            width: 30vh;
+    }
+    
+   
+}
+
+@media screen and (max-aspect-ratio: 480/640){
+    .outter_container{ vertical-align: middle; height: 133vw; top: 0;left: 0;right: 0; bottom:0 ; margin: auto;position: absolute;}
+    .startBtn1{
+        top: 66%;
+    }
+    #char{
+            bottom: -2vh;
+  
+    }
+
+   
+}
+
+a, img, #clickpanel, button{
+-webkit-user-select: none; /* Chrome/Safari */        
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
+    }
+
+.keyboardbugfix{
+    width: 100%;
+}
